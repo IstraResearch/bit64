@@ -10,8 +10,8 @@ echo "#### starting prebuild.sh"
 
 cd ..
 mkdir -p man
-cd man
+cd man || exit
 find ../R -name '*.[rR]' -exec cat \{\} \; | perl ../exec/make_rd.pl 
-cd ../exec
+cd ../exec || exit
 
 echo "#### prebuild.sh completed!"

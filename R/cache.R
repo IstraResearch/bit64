@@ -101,7 +101,7 @@
 #}
 
 newcache <- function(x){
-	env <- new.env()
+	env <- new.env(parent=emptyenv())
 	vmode <- typeof(x)
 	if (vmode=="double" && is.integer64(x))
 	  vmode <- "integer64"
