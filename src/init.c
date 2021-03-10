@@ -126,7 +126,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"as_character_integer64",           (DL_FUNC) &as_character_integer64,           2},
     {"as_double_integer64",              (DL_FUNC) &as_double_integer64,              2},
     {"as_integer64_bitstring",           (DL_FUNC) &as_integer64_bitstring,           2},
-    {"as_integer64_character",           (DL_FUNC) &as_integer64_character,           2},
+    {"as_integer64_character",           (DL_FUNC) &as_integer64_character,           3},
     {"as_integer64_double",              (DL_FUNC) &as_integer64_double,              2},
     {"as_integer64_integer",             (DL_FUNC) &as_integer64_integer,             2},
     {"as_integer_integer64",             (DL_FUNC) &as_integer_integer64,             2},
