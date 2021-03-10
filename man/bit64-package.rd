@@ -5,7 +5,7 @@
 \alias{is.integer64}
 \alias{is.integer.integer64}
 \alias{is.vector.integer64}
-%as.vector.integer64 removed as requested by the CRAN maintainer \alias{as.vector.integer64}
+\alias{as.vector.integer64}
 \alias{length<-.integer64}
 \alias{print.integer64}
 \alias{str.integer64}
@@ -205,7 +205,7 @@ is not worth it with 32x at duplicated RAM consumption).
    \code{\link{as.double.integer64}} \tab \code{\link{as.double}} \tab  \cr
    \code{\link{as.integer.integer64}} \tab \code{\link{as.integer}} \tab  \cr
    \code{\link{as.logical.integer64}} \tab \code{\link{as.logical}} \tab  \cr
-   %as.vector.integer64 removed as requested by the CRAN maintainer \code{\link{as.vector.integer64}} \tab \code{\link{as.vector}} \tab  \cr
+   \code{\link{as.vector.integer64}} \tab \code{\link{as.logical}} \tab  \cr
  \cr
    \bold{data structures} \tab \bold{see also}          \tab \bold{description} \cr
    \code{\link{c.integer64}} \tab \code{\link{c}} \tab vector concatenate \cr
@@ -452,7 +452,6 @@ names(x) <- letters  # use names as usual
 x
 
 message("Using integer64 in array - note that 'matrix' currently does not work")
-message("as.vector.integer64 removed as requested by the CRAN maintainer")
 message("as consequence 'array' also does not work anymore")
 %y <- array(as.integer64(NA), dim=c(3,4), dimnames=list(letters[1:3], LETTERS[1:4]))
 message("we still can create a matrix or array by assigning 'dim'")

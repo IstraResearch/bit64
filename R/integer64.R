@@ -15,7 +15,7 @@
 #! \alias{is.integer64}
 #! \alias{is.integer.integer64}
 #! \alias{is.vector.integer64}
-#! %as.vector.integer64 removed as requested by the CRAN maintainer \alias{as.vector.integer64}
+#! \alias{as.vector.integer64}
 #! \alias{length<-.integer64}
 #! \alias{print.integer64}
 #! \alias{str.integer64}
@@ -215,7 +215,7 @@
 #!    \code{\link{as.double.integer64}} \tab \code{\link{as.double}} \tab  \cr
 #!    \code{\link{as.integer.integer64}} \tab \code{\link{as.integer}} \tab  \cr
 #!    \code{\link{as.logical.integer64}} \tab \code{\link{as.logical}} \tab  \cr
-#!    %as.vector.integer64 removed as requested by the CRAN maintainer \code{\link{as.vector.integer64}} \tab \code{\link{as.vector}} \tab  \cr
+#!    \code{\link{as.vector.integer64}} \tab \code{\link{as.vector}} \tab  \cr
 #!  \cr
 #!    \bold{data structures} \tab \bold{see also}          \tab \bold{description} \cr
 #!    \code{\link{c.integer64}} \tab \code{\link{c}} \tab vector concatenate \cr
@@ -462,7 +462,6 @@
 #! x
 #! 
 #! message("Using integer64 in array - note that 'matrix' currently does not work")
-#! message("as.vector.integer64 removed as requested by the CRAN maintainer")
 #! message("as consequence 'array' also does not work anymore")
 #! %y <- array(as.integer64(NA), dim=c(3,4), dimnames=list(letters[1:3], LETTERS[1:4]))
 #! message("we still can create a matrix or array by assigning 'dim'")
@@ -1517,7 +1516,7 @@
 #! \keyword{ classes }
 #! \keyword{ manip }
 #! \seealso{ 
-#!   \code{\link{cbind.integer64}} \code{\link{integer64}}  %as.vector.integer64 removed as requested by the CRAN maintainer \code{\link{as.vector.integer64}} 
+#!   \code{\link{cbind.integer64}} \code{\link{integer64}} \code{\link{as.vector.integer64}} 
 #! }
 #! \examples{
 #!   as.data.frame.integer64(as.integer64(1:12))
@@ -2854,13 +2853,12 @@ xor.integer64 <- function(x, y){
   ret
 }
 
-# as.vector.integer64 removed as requested by the CRAN maintainer
-# as.vector.integer64 <- function(x, mode="any"){
-  # ret <- NextMethod()
-  # if (mode=="any")
-	# oldClass(ret) <- "integer64"
-  # ret
-# }
+as.vector.integer64 <- function(x, mode="any"){
+  ret <- NextMethod()
+  if (mode=="any")
+    oldClass(ret) <- "integer64"
+  ret
+}
 
 # bug in R does not dispatch
 is.vector.integer64 <- function(x, mode="any"){
