@@ -164,3 +164,17 @@ if (!exists("order.default")){
 	"order.default" <- function(...) base::"order"(...)
 }
 
+if (!exists("shiftr.default")){
+  "shiftr" <- function(e1, e2) UseMethod("shiftr")
+  "shiftr.default" <- function(e1, e2) shiftr(e1, e2)
+}
+
+if (!exists("ushiftr.default")){
+  "ushiftr" <- function(e1, e2) UseMethod("ushiftr")
+  "ushiftr.default" <- function(e1, e2) ushiftr(e1, e2)
+}
+
+if (!exists("shiftl.default")){
+  "shiftl" <- function(e1, e2) UseMethod("shiftl")
+  "shiftl.default" <- function(e1, e2) shiftl(e1, e2)
+}
