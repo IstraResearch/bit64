@@ -2853,6 +2853,40 @@ xor.integer64 <- function(x, y){
   ret
 }
 
+shiftr.integer64 <- function(e1, e2){
+  a <- binattr(e1,e2)
+  l1 <- length(e1)
+  l2 <- length(e2)
+  l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
+  ret <- double(l)
+  .Call(C_shiftr_integer64, as.integer64(e1), as.integer64(e2), ret)
+  attributes(ret) <- a
+  ret
+}
+
+ushiftr.integer64 <- function(e1, e2){
+  a <- binattr(e1,e2)
+  l1 <- length(e1)
+  l2 <- length(e2)
+  l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
+  ret <- double(l)
+  .Call(C_ushiftr_integer64, as.integer64(e1), as.integer64(e2), ret)
+  attributes(ret) <- a
+  ret
+}
+
+shiftl.integer64 <- function(e1, e2){
+  a <- binattr(e1,e2)
+  l1 <- length(e1)
+  l2 <- length(e2)
+  l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
+  ret <- double(l)
+  .Call(C_shiftl_integer64, as.integer64(e1), as.integer64(e2), ret)
+  attributes(ret) <- a
+  ret
+}
+
+
 as.vector.integer64 <- function(x, mode="any"){
   ret <- NextMethod()
   if (mode=="any")

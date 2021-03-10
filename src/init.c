@@ -62,6 +62,9 @@ extern SEXP power_integer64_integer64(SEXP, SEXP, SEXP);
 extern SEXP prod_integer64(SEXP, SEXP, SEXP);
 extern SEXP range_integer64(SEXP, SEXP, SEXP);
 extern SEXP runif_integer64(SEXP, SEXP, SEXP);
+extern SEXP shiftr_integer64(SEXP, SEXP, SEXP);
+extern SEXP ushiftr_integer64(SEXP, SEXP, SEXP);
+extern SEXP shiftl_integer64(SEXP, SEXP, SEXP);
 extern SEXP r_ram_integer64_issorted_asc(SEXP);
 extern SEXP r_ram_integer64_mergeorder(SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP r_ram_integer64_mergesort(SEXP, SEXP, SEXP, SEXP);
@@ -174,6 +177,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"prod_integer64",                   (DL_FUNC) &prod_integer64,                   3},
     {"range_integer64",                  (DL_FUNC) &range_integer64,                  3},
     {"runif_integer64",                  (DL_FUNC) &runif_integer64,                  3},
+    {"shiftr_integer64",                 (DL_FUNC) &shiftr_integer64,                 3},
+    {"ushiftr_integer64",                (DL_FUNC) &ushiftr_integer64,                3},
+    {"shiftl_integer64",                 (DL_FUNC) &shiftl_integer64,                 3},
     {"r_ram_integer64_issorted_asc",     (DL_FUNC) &r_ram_integer64_issorted_asc,     1},
     {"r_ram_integer64_mergeorder",       (DL_FUNC) &r_ram_integer64_mergeorder,       5},
     {"r_ram_integer64_mergesort",        (DL_FUNC) &r_ram_integer64_mergesort,        4},

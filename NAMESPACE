@@ -418,6 +418,15 @@ S3method("&", integer64)
 S3method("|", integer64)
 S3method("xor", integer64)
 
+# The default versions can be masked by other packages
+S3method("shiftr", default)
+S3method("ushiftr", default)
+S3method("shiftl", default)
+
+S3method("shiftr", integer64)
+S3method("ushiftr", integer64)
+S3method("shiftl", integer64)
+
 S3method("!=", integer64)
 S3method("==", integer64)
 S3method("<", integer64)

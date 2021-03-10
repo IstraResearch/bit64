@@ -1026,6 +1026,43 @@ SEXP runif_integer64(SEXP n_, SEXP min_, SEXP max_){
   return ret_;
 }
 
+SEXP shiftr_integer64(SEXP e1_, SEXP e2_, SEXP ret_){
+  long long i, n = LENGTH(ret_);
+  long long i1, n1 = LENGTH(e1_);
+  long long i2, n2 = LENGTH(e2_);
+  long long * e1 = (long long *) REAL(e1_);
+  long long * e2 = (long long *) REAL(e2_);
+  long long * ret = (long long *) REAL(ret_);
+  mod_iterate(n1, n2, i1, i2) {
+    ret[i] = e1[i1] >> e2[i2];
+  }
+  return ret_;
+}
+SEXP ushiftr_integer64(SEXP e1_, SEXP e2_, SEXP ret_){
+  long long i, n = LENGTH(ret_);
+  long long i1, n1 = LENGTH(e1_);
+  long long i2, n2 = LENGTH(e2_);
+  unsigned long long * e1 = (unsigned long long *) REAL(e1_);
+  long long * e2 = (long long *) REAL(e2_);
+  long long * ret = (long long *) REAL(ret_);
+  mod_iterate(n1, n2, i1, i2) {
+    ret[i] = e1[i1] >> e2[i2];
+  }
+  return ret_;
+}
+SEXP shiftl_integer64(SEXP e1_, SEXP e2_, SEXP ret_){
+  long long i, n = LENGTH(ret_);
+  long long i1, n1 = LENGTH(e1_);
+  long long i2, n2 = LENGTH(e2_);
+  long long * e1 = (long long *) REAL(e1_);
+  long long * e2 = (long long *) REAL(e2_);
+  long long * ret = (long long *) REAL(ret_);
+  mod_iterate(n1, n2, i1, i2) {
+    ret[i] = e1[i1] << e2[i2];
+  }
+  return ret_;
+}
+
 /*
 require(bit64)
 require(microbenchmark)
