@@ -1662,7 +1662,7 @@ all.equal.integer64  <- function (
          domain = NA)
   # JO: BEGIN respect that integer is a proper subset of integer64 like integer is a proper subset of double
   oldwarn <- getOption("warn")
-  on.exit(options(warn=oldwarn))
+  on.exit(options(warn=oldwarn), add=TRUE)
   options(warn=2L)
   if (!is.integer64(target)){
     cl <- oldClass(target)
@@ -2241,7 +2241,7 @@ rbind.integer64 <- function(...){
 # }
 as.data.frame.integer64 <- function(x, ...){
   cl <- oldClass(x)
-  on.exit(setattr(x, "class", cl))
+  on.exit(setattr(x, "class", cl), add=TRUE)
   setattr(x, "class", minusclass(cl, "integer64"))
   ret <- as.data.frame(x, ...)
   k <- length(ret)

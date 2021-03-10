@@ -568,7 +568,7 @@ optimizer64 <- function(nsmall=2^16, nbig=2^25, timefun=repeat.time
  
  if (plot){
   oldpar <- par(no.readonly = TRUE)
-  on.exit(par(oldpar))
+  on.exit(par(oldpar), add=TRUE)
   par(mfrow=c(2,1))
  }
  
