@@ -1977,7 +1977,7 @@ as.integer64.NULL <- function (x, ...){
 as.integer64.integer64 <- function(x, ...)x
 
 as.integer64.double <- function(x, keep.names=FALSE, ...){
-  ret <- .Call(C_as_integer64_double, x, double(length(x)))
+  ret <- .Call(C_as_integer64_double, x, double(length(x)), PACKAGE = "bit64")
   if (keep.names)
     names(ret) <- names(x)
   oldClass(ret) <- "integer64"
@@ -1985,14 +1985,14 @@ as.integer64.double <- function(x, keep.names=FALSE, ...){
 }
 
 as.integer64.logical <- as.integer64.integer <- function(x, ...){
-  ret <- .Call(C_as_integer64_integer, x, double(length(x)))
+  ret <- .Call(C_as_integer64_integer, x, double(length(x)), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
 
 as.integer64.character <- function(x, ...){
   n <- length(x)
-  ret <- .Call(C_as_integer64_character, x, rep(as.double(NA), n))
+  ret <- .Call(C_as_integer64_character, x, rep(as.double(NA), n), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
@@ -2001,28 +2001,28 @@ as.integer64.factor <- function(x, ...)
 as.integer64(unclass(x), ...)
 
 as.double.integer64 <- function(x, keep.names=FALSE, ...){
-  ret <- .Call(C_as_double_integer64, x, double(length(x)))
+  ret <- .Call(C_as_double_integer64, x, double(length(x)), PACKAGE = "bit64")
   if (keep.names)
     names(ret) <- names(x)
   ret
 }
 
 as.integer.integer64 <- function(x, ...){
-  .Call(C_as_integer_integer64, x, integer(length(x)))
+  .Call(C_as_integer_integer64, x, integer(length(x)), PACKAGE = "bit64")
 }
 
 as.logical.integer64 <- function(x, ...){
-  .Call(C_as_logical_integer64, x, logical(length(x)))
+  .Call(C_as_logical_integer64, x, logical(length(x)), PACKAGE = "bit64")
 }
 
 as.character.integer64 <- function(x, ...){
   n <- length(x)
-  .Call(C_as_character_integer64, x, rep(as.character(NA), n))
+  .Call(C_as_character_integer64, x, rep(as.character(NA), n), PACKAGE = "bit64")
 }
 
 as.bitstring.integer64 <- function(x, ...){
   n <- length(x)
-  ret <- .Call(C_as_bitstring_integer64, x, rep(as.character(NA), n))
+  ret <- .Call(C_as_bitstring_integer64, x, rep(as.character(NA), n), PACKAGE = "bit64")
   oldClass(ret) <- 'bitstring'
   ret
 }
@@ -2034,7 +2034,7 @@ print.bitstring <- function(x, ...){
 
 as.integer64.bitstring <- function(x, ...){
   n <- length(x)
-  ret <- .Call(C_as_integer64_bitstring, x, double(length(x)))
+  ret <- .Call(C_as_integer64_bitstring, x, double(length(x)), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
@@ -2262,7 +2262,7 @@ as.data.frame.integer64 <- function(x, ...){
 ":.integer64" <- function(from, to){
   from <- as.integer64(from)
   to <- as.integer64(to)
-  ret <- .Call(C_seq_integer64, from, as.integer64(1L), double(as.integer(to-from+1L)))
+  ret <- .Call(C_seq_integer64, from, as.integer64(1L), double(as.integer(to-from+1L)), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
@@ -2308,7 +2308,7 @@ as.data.frame.integer64 <- function(x, ...){
         return(from)
       else{
         #return(cumsum(c(from, rep(by, length.out-1L))))
-		ret <- .Call(C_seq_integer64, from, by, double(as.integer(length.out)))
+		ret <- .Call(C_seq_integer64, from, by, double(as.integer(length.out)), PACKAGE = "bit64")
 		oldClass(ret) <- "integer64"
 		return(ret)
 	  }
@@ -2327,7 +2327,7 @@ as.data.frame.integer64 <- function(x, ...){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
-  ret <- .Call(C_plus_integer64, e1, e2, ret)
+  ret <- .Call(C_plus_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- plusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2345,7 +2345,7 @@ as.data.frame.integer64 <- function(x, ...){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
-  .Call(C_minus_integer64, e1, e2, ret)
+  .Call(C_minus_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- plusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2359,7 +2359,7 @@ as.data.frame.integer64 <- function(x, ...){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
-  .Call(C_intdiv_integer64, e1, e2, ret)
+  .Call(C_intdiv_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- plusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2373,7 +2373,7 @@ as.data.frame.integer64 <- function(x, ...){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
-  .Call(C_mod_integer64, e1, e2, ret)
+  .Call(C_mod_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- plusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2387,11 +2387,11 @@ as.data.frame.integer64 <- function(x, ...){
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
   if (is.double(e2))  # implies !is.integer64(e2)
-    .Call(C_times_integer64_double, as.integer64(e1), e2, ret)
+    .Call(C_times_integer64_double, as.integer64(e1), e2, ret, PACKAGE = "bit64")
   else if (is.double(e1))
-    .Call(C_times_integer64_double, as.integer64(e2), e1, ret)
+    .Call(C_times_integer64_double, as.integer64(e2), e1, ret, PACKAGE = "bit64")
   else
-    .Call(C_times_integer64_integer64, as.integer64(e1), as.integer64(e2), ret)
+    .Call(C_times_integer64_integer64, as.integer64(e1), as.integer64(e2), ret, PACKAGE = "bit64")
   a$class <- plusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2404,9 +2404,9 @@ as.data.frame.integer64 <- function(x, ...){
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
   if (is.double(e2))  # implies !is.integer64(e2)
-    .Call(C_power_integer64_double, as.integer64(e1), e2, ret)
+    .Call(C_power_integer64_double, as.integer64(e1), e2, ret, PACKAGE = "bit64")
   else
-    .Call(C_power_integer64_integer64, as.integer64(e1), as.integer64(e2), ret)
+    .Call(C_power_integer64_integer64, as.integer64(e1), as.integer64(e2), ret, PACKAGE = "bit64")
   a$class <- plusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2419,11 +2419,11 @@ as.data.frame.integer64 <- function(x, ...){
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
   if (is.double(e2))  # implies !is.integer64(e2)
-    .Call(C_divide_integer64_double, as.integer64(e1), e2, ret)
+    .Call(C_divide_integer64_double, as.integer64(e1), e2, ret, PACKAGE = "bit64")
   else if (is.double(e1))
-    .Call(C_divide_double_integer64, e1, e2, ret)
+    .Call(C_divide_double_integer64, e1, e2, ret, PACKAGE = "bit64")
   else
-    .Call(C_divide_integer64_integer64, as.integer64(e1), as.integer64(e2), ret)
+    .Call(C_divide_integer64_integer64, as.integer64(e1), as.integer64(e2), ret, PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2432,21 +2432,21 @@ as.data.frame.integer64 <- function(x, ...){
 
 "sign.integer64" <- function(x){
   a <- attributes(x)
-  ret <- .Call(C_sign_integer64, x, double(length(x)))
+  ret <- .Call(C_sign_integer64, x, double(length(x)), PACKAGE = "bit64")
   attributes(ret) <- a
   ret
 }
 
 "abs.integer64" <- function(x){
   a <- attributes(x)
-  ret <- .Call(C_abs_integer64, x, double(length(x)))
+  ret <- .Call(C_abs_integer64, x, double(length(x)), PACKAGE = "bit64")
   attributes(ret) <- a
   ret
 }
 
 "sqrt.integer64" <- function(x){
   a <- attributes(x)
-  ret <- .Call(C_sqrt_integer64, x, double(length(x)))
+  ret <- .Call(C_sqrt_integer64, x, double(length(x)), PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2459,11 +2459,11 @@ as.data.frame.integer64 <- function(x, ...){
   l <- if (l.x==0 || (!is.null(base) && l.base==0)) 0 else max(l.base,l.x)
   ret <- double(l)
   if (is.null(base)){
-	  .Call(C_log_integer64, x, ret)
+	  .Call(C_log_integer64, x, ret, PACKAGE = "bit64")
   }else if(length(base)==1){
-    .Call(C_logbase_integer64, x, as.double(base), ret)
+    .Call(C_logbase_integer64, x, as.double(base), ret, PACKAGE = "bit64")
   }else{
-    .Call(C_logvect_integer64, x, as.double(base), ret)
+    .Call(C_logvect_integer64, x, as.double(base), ret, PACKAGE = "bit64")
   }
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
@@ -2472,7 +2472,7 @@ as.data.frame.integer64 <- function(x, ...){
 
 "log10.integer64" <- function(x){
   a <- attributes(x)
-  ret <- .Call(C_log10_integer64, x, double(length(x)))
+  ret <- .Call(C_log10_integer64, x, double(length(x)), PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2480,7 +2480,7 @@ as.data.frame.integer64 <- function(x, ...){
 
 "log2.integer64" <- function(x){
   a <- attributes(x)
-  ret <- .Call(C_log2_integer64, x, double(length(x)))
+  ret <- .Call(C_log2_integer64, x, double(length(x)), PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2515,11 +2515,11 @@ as.data.frame.integer64 <- function(x, ...){
 "any.integer64" <- function(..., na.rm = FALSE){
   l <- list(...)
   if (length(l)==1){
-		  .Call(C_any_integer64, l[[1]], na.rm, logical(1))
+		  .Call(C_any_integer64, l[[1]], na.rm, logical(1), PACKAGE = "bit64")
   }else{
 	  any(sapply(l, function(e){
   		if (is.integer64(e)){
-  		  .Call(C_any_integer64, e, na.rm, logical(1))
+  		  .Call(C_any_integer64, e, na.rm, logical(1), PACKAGE = "bit64")
   		}else{
   		  any(e, na.rm = na.rm)
   		}
@@ -2530,11 +2530,11 @@ as.data.frame.integer64 <- function(x, ...){
 "all.integer64" <- function(..., na.rm = FALSE){
   l <- list(...)
   if (length(l)==1){
-		  .Call(C_all_integer64, l[[1]], na.rm, logical(1))
+		  .Call(C_all_integer64, l[[1]], na.rm, logical(1), PACKAGE = "bit64")
   }else{
 	  all(sapply(l, function(e){
   		if (is.integer64(e)){
-  		  .Call(C_all_integer64, e, na.rm, logical(1))
+  		  .Call(C_all_integer64, e, na.rm, logical(1), PACKAGE = "bit64")
   		}else{
   		  all(e, na.rm = na.rm)
   		}
@@ -2545,13 +2545,13 @@ as.data.frame.integer64 <- function(x, ...){
 "sum.integer64" <- function(..., na.rm = FALSE){
   l <- list(...)
   if (length(l)==1){
-		  ret <- .Call(C_sum_integer64, l[[1]], na.rm, double(1))
+		  ret <- .Call(C_sum_integer64, l[[1]], na.rm, double(1), PACKAGE = "bit64")
 		  oldClass(ret) <- "integer64"
 		  ret
   }else{
 	  ret <- sapply(l, function(e){
 		if (is.integer64(e)){
-		  .Call(C_sum_integer64, e, na.rm, double(1))
+		  .Call(C_sum_integer64, e, na.rm, double(1), PACKAGE = "bit64")
 		}else{
 		  as.integer64(sum(e, na.rm = na.rm))
 		}
@@ -2566,13 +2566,13 @@ as.data.frame.integer64 <- function(x, ...){
 "prod.integer64" <- function(..., na.rm = FALSE){
   l <- list(...)
   if (length(l)==1){
-    ret <- .Call(C_prod_integer64, l[[1]], na.rm, double(1))
+    ret <- .Call(C_prod_integer64, l[[1]], na.rm, double(1), PACKAGE = "bit64")
 		oldClass(ret) <- "integer64"
 		ret
   }else{
       ret <- sapply(l, function(e){
 		if (is.integer64(e)){
-		  .Call(C_prod_integer64, e, na.rm, double(1))
+		  .Call(C_prod_integer64, e, na.rm, double(1), PACKAGE = "bit64")
 		}else{
 		  as.integer64(prod(e, na.rm = na.rm))
 		}
@@ -2589,14 +2589,14 @@ as.data.frame.integer64 <- function(x, ...){
   if (length(l)==1){
     if (length(l[[1]]))
       noval <- FALSE
-    ret <- .Call(C_min_integer64, l[[1]], na.rm, double(1))
+    ret <- .Call(C_min_integer64, l[[1]], na.rm, double(1), PACKAGE = "bit64")
     oldClass(ret) <- "integer64"
   }else{
     ret <- sapply(l, function(e){
       if (length(e))
         noval <<- FALSE
       if (is.integer64(e)){
-        .Call(C_min_integer64, e, na.rm, double(1))
+        .Call(C_min_integer64, e, na.rm, double(1), PACKAGE = "bit64")
       }else{
         as.integer64(min(e, na.rm = na.rm))
       }
@@ -2616,14 +2616,14 @@ as.data.frame.integer64 <- function(x, ...){
   if (length(l)==1){
 	if (length(l[[1]]))
 	  noval <- FALSE
-	  ret <- .Call(C_max_integer64, l[[1]], na.rm, double(1))
+	  ret <- .Call(C_max_integer64, l[[1]], na.rm, double(1), PACKAGE = "bit64")
 	oldClass(ret) <- "integer64"
   }else{
 	ret <- sapply(l, function(e){
 	    if (length(e))
 	      noval <<- FALSE
 		if (is.integer64(e)){
-		  .Call(C_max_integer64, e, na.rm, double(1))
+		  .Call(C_max_integer64, e, na.rm, double(1), PACKAGE = "bit64")
 		}else{
 		  as.integer64(max(e, na.rm = na.rm))
 		}
@@ -2645,14 +2645,14 @@ as.data.frame.integer64 <- function(x, ...){
   if (length(l)==1){
 	if (length(l[[1]]))
 	  noval <- FALSE
-	  ret <- .Call(C_range_integer64, l[[1]], na.rm, double(2))
+	  ret <- .Call(C_range_integer64, l[[1]], na.rm, double(2), PACKAGE = "bit64")
 	oldClass(ret) <- "integer64"
   }else{
       ret <- unlist(sapply(l, function(e){
 	    if (length(e))
 	      noval <<- FALSE
 		if (is.integer64(e)){
-		  .Call(C_range_integer64, e, na.rm, double(2))
+		  .Call(C_range_integer64, e, na.rm, double(2), PACKAGE = "bit64")
 		}else{
 		  as.integer64(range(e, na.rm = na.rm))
 		}
@@ -2667,7 +2667,7 @@ as.data.frame.integer64 <- function(x, ...){
 
 
 lim.integer64 <- function(){
-  ret <- .Call(C_lim_integer64, double(2))
+  ret <- .Call(C_lim_integer64, double(2), PACKAGE = "bit64")
 	oldClass(ret) <- "integer64"
 	return(ret)
 }
@@ -2685,9 +2685,9 @@ lim.integer64 <- function(){
     # not assigning ret<-.Call in the following is intended because faster
     if (d==differences){
       ret <- double(n)
-      .Call(C_diff_integer64, x, as.integer64(lag), as.integer64(n), ret)
+      .Call(C_diff_integer64, x, as.integer64(lag), as.integer64(n), ret, PACKAGE = "bit64")
     }else{
-      .Call(C_diff_integer64, ret, as.integer64(lag), as.integer64(n), ret)
+      .Call(C_diff_integer64, ret, as.integer64(lag), as.integer64(n), ret, PACKAGE = "bit64")
     }
     d <- d - 1L
   }
@@ -2699,24 +2699,24 @@ lim.integer64 <- function(){
 
 
 "cummin.integer64" <- function(x){
-  ret <- .Call(C_cummin_integer64, x, double(length(x)))
+  ret <- .Call(C_cummin_integer64, x, double(length(x)), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
 "cummax.integer64" <- function(x){
-  ret <- .Call(C_cummax_integer64, x, double(length(x)))
+  ret <- .Call(C_cummax_integer64, x, double(length(x)), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
 
 "cumsum.integer64" <- function(x){
-  ret <- .Call(C_cumsum_integer64, x, double(length(x)))
+  ret <- .Call(C_cumsum_integer64, x, double(length(x)), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
 
 "cumprod.integer64" <- function(x){
-  ret <- .Call(C_cumprod_integer64, x, double(length(x)))
+  ret <- .Call(C_cumprod_integer64, x, double(length(x)), PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
@@ -2725,7 +2725,7 @@ lim.integer64 <- function(){
 
 "is.na.integer64" <- function(x){
   a <- attributes(x)
-  ret <- .Call(C_isna_integer64, x, logical(length(x)))
+  ret <- .Call(C_isna_integer64, x, logical(length(x)), PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2744,7 +2744,7 @@ lim.integer64 <- function(){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- logical(l)
-  .Call(C_EQ_integer64, e1, e2, ret)
+  .Call(C_EQ_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2758,7 +2758,7 @@ lim.integer64 <- function(){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- logical(l)
-  .Call(C_NE_integer64, e1, e2, ret)
+  .Call(C_NE_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2772,7 +2772,7 @@ lim.integer64 <- function(){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- logical(l)
-  .Call(C_LT_integer64, e1, e2, ret)
+  .Call(C_LT_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2786,7 +2786,7 @@ lim.integer64 <- function(){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- logical(l)
-  .Call(C_LE_integer64, e1, e2, ret)
+  .Call(C_LE_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2800,7 +2800,7 @@ lim.integer64 <- function(){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- logical(l)
-  .Call(C_GT_integer64, e1, e2, ret)
+  .Call(C_GT_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2814,7 +2814,7 @@ lim.integer64 <- function(){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- logical(l)
-  .Call(C_GE_integer64, e1, e2, ret)
+  .Call(C_GE_integer64, e1, e2, ret, PACKAGE = "bit64")
   a$class <- minusclass(a$class, "integer64")
   attributes(ret) <- a
   ret
@@ -2859,7 +2859,7 @@ shiftr.integer64 <- function(e1, e2){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
-  .Call(C_shiftr_integer64, as.integer64(e1), as.integer64(e2), ret)
+  .Call(C_shiftr_integer64, as.integer64(e1), as.integer64(e2), ret, PACKAGE = "bit64")
   attributes(ret) <- a
   ret
 }
@@ -2870,7 +2870,7 @@ ushiftr.integer64 <- function(e1, e2){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
-  .Call(C_ushiftr_integer64, as.integer64(e1), as.integer64(e2), ret)
+  .Call(C_ushiftr_integer64, as.integer64(e1), as.integer64(e2), ret, PACKAGE = "bit64")
   attributes(ret) <- a
   ret
 }
@@ -2881,7 +2881,7 @@ shiftl.integer64 <- function(e1, e2){
   l2 <- length(e2)
   l <- if (l1 == 0 || l2 == 0) 0 else max(l1,l2)
   ret <- double(l)
-  .Call(C_shiftl_integer64, as.integer64(e1), as.integer64(e2), ret)
+  .Call(C_shiftl_integer64, as.integer64(e1), as.integer64(e2), ret, PACKAGE = "bit64")
   attributes(ret) <- a
   ret
 }
