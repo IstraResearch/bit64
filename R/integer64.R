@@ -1990,9 +1990,9 @@ as.integer64.logical <- as.integer64.integer <- function(x, ...){
   ret
 }
 
-as.integer64.character <- function(x, ...){
+as.integer64.character <- function(x, base=10, ...){
   n <- length(x)
-  ret <- .Call(C_as_integer64_character, x, rep(as.double(NA), n), PACKAGE = "bit64")
+  ret <- .Call(C_as_integer64_character, x, rep(as.double(NA), n), as.integer(base),  PACKAGE = "bit64")
   oldClass(ret) <- "integer64"
   ret
 }
