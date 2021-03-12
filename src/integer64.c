@@ -297,6 +297,36 @@ __attribute__((no_sanitize("signed-integer-overflow"))) SEXP minus_integer64(SEX
   return ret_;
 }
 
+SEXP and_integer64(SEXP e1_, SEXP e2_, SEXP ret_){
+  long long i, n = LENGTH(ret_);
+  long long i1, n1 = LENGTH(e1_);
+  long long i2, n2 = LENGTH(e2_);
+  long long * e1 = (long long *) REAL(e1_);
+  long long * e2 = (long long *) REAL(e2_);
+  long long * ret = (long long *) REAL(ret_);
+  
+  mod_iterate(n1, n2, i1, i2) {
+    AND64(e1[i1],e2[i2],ret[i])
+  }
+  
+  return ret_;
+}
+
+SEXP or_integer64(SEXP e1_, SEXP e2_, SEXP ret_){
+  long long i, n = LENGTH(ret_);
+  long long i1, n1 = LENGTH(e1_);
+  long long i2, n2 = LENGTH(e2_);
+  long long * e1 = (long long *) REAL(e1_);
+  long long * e2 = (long long *) REAL(e2_);
+  long long * ret = (long long *) REAL(ret_);
+  
+  mod_iterate(n1, n2, i1, i2) {
+    OR64(e1[i1],e2[i2],ret[i])
+  }
+  
+  return ret_;
+}
+
 __attribute__((no_sanitize("signed-integer-overflow"))) SEXP diff_integer64(SEXP x_, SEXP lag_, SEXP n_, SEXP ret_){
   long long i, n = *((long long *) REAL(n_));
   long long * x = (long long *) REAL(x_);

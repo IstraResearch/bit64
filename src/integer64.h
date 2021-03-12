@@ -186,6 +186,20 @@ else {                                                   \
 			ret = e1 - e2 * ret; \
 	}
 
+#define AND64(e1,e2,ret)                      \
+if (e1 == NA_INTEGER64 || e2 == NA_INTEGER64) \
+  ret = NA_INTEGER64;                         \
+else {                                        \
+  ret = e1 & e2;                              \
+}
+
+#define OR64(e1,e2,ret)                       \
+if (e1 == NA_INTEGER64 || e2 == NA_INTEGER64) \
+  ret = NA_INTEGER64;                         \
+else {                                        \
+  ret = e1 | e2;                              \
+}                                                              \
+
 #define MIN64(e1,e2,ret) \
 	if (e1 == NA_INTEGER64 || e2 == NA_INTEGER64) \
 		ret = NA_INTEGER64; \

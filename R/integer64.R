@@ -2886,6 +2886,48 @@ shiftl.integer64 <- function(e1, e2){
   ret
 }
 
+bit.and <- function(a,b)
+  UseMethod("bit.and")
+bit.and.default <- function(a,b) {
+  if (is.integer64(b))
+    bit.and.integer64(a,b)
+  else
+    as.integer(bitops::bitAnd(a,b))
+}
+bit.and.integer64 <- function(a,b) {
+  if (length(a) == 0 || length(b) == 0)
+    return(integer64())
+  ret <- double(max(length(a),length(b)))
+  rv <- .Call("and_integer64",as.integer64(a),as.integer64(b),ret,PACKAGE="bit64")
+  class(rv) <- "integer64"
+  rv
+}
+
+bitAnd <- function(a,b) {
+  UseMethod("bit.and")
+}
+
+
+bit.or <- function(a,b)
+  UseMethod("bit.or")
+bit.or.default <- function(a,b) {
+  if (is.integer64(b))
+    bit.or.integer64(a,b)
+  else
+    as.integer(bitops::bitOr(a,b))
+}
+bit.or.integer64 <- function(a,b) {
+  if (length(a) == 0 || length(b) == 0)
+    return(integer64())
+  ret <- double(max(length(a),length(b)))
+  rv <- .Call("or_integer64",as.integer64(a),as.integer64(b),ret,PACKAGE="bit64")
+  class(rv) <- "integer64"
+  rv
+}
+
+bitOr <- function(a,b) {
+  UseMethod("bit.or")
+}
 
 as.vector.integer64 <- function(x, mode="any"){
   ret <- NextMethod()

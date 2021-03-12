@@ -108,6 +108,11 @@ export(
 ,"[[<-.integer64"
 ,"[<-.integer64"
 
+,bitAnd
+,bit.and
+,bitOr
+,bit.or
+
 ,"str.integer64"
 ,"print.integer64"
 ,"format.integer64"
@@ -417,6 +422,11 @@ S3method("!", integer64)
 S3method("&", integer64)
 S3method("|", integer64)
 S3method("xor", integer64)
+
+S3method(bit.or, default)
+S3method(bit.or, integer64)
+S3method(bit.and, default)
+S3method(bit.and, integer64)
 
 # The default versions can be masked by other packages
 S3method("shiftr", default)
