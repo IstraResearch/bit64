@@ -108,10 +108,8 @@ export(
 ,"[[<-.integer64"
 ,"[<-.integer64"
 
-,bitAnd
-,bit.and
-,bitOr
-,bit.or
+,"bitAnd"
+,"bitOr"
 
 ,"str.integer64"
 ,"print.integer64"

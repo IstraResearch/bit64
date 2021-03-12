@@ -54,6 +54,8 @@ extern SEXP max_integer64(SEXP, SEXP, SEXP);
 extern SEXP mean_integer64(SEXP, SEXP, SEXP);
 extern SEXP min_integer64(SEXP, SEXP, SEXP);
 extern SEXP minus_integer64(SEXP, SEXP, SEXP);
+extern SEXP and_integer64(SEXP, SEXP, SEXP);
+extern SEXP or_integer64(SEXP, SEXP, SEXP);
 extern SEXP mod_integer64(SEXP, SEXP, SEXP);
 extern SEXP NE_integer64(SEXP, SEXP, SEXP);
 extern SEXP plus_integer64(SEXP, SEXP, SEXP);
@@ -167,6 +169,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"LT_integer64",                     (DL_FUNC) &LT_integer64,                     3},
     {"max_integer64",                    (DL_FUNC) &max_integer64,                    3},
     {"mean_integer64",                   (DL_FUNC) &mean_integer64,                   3},
+    {"and_integer64",                    (DL_FUNC) &and_integer64,                    3},
+    {"or_integer64",                     (DL_FUNC) &or_integer64,                     3},
     {"min_integer64",                    (DL_FUNC) &min_integer64,                    3},
     {"minus_integer64",                  (DL_FUNC) &minus_integer64,                  3},
     {"mod_integer64",                    (DL_FUNC) &mod_integer64,                    3},

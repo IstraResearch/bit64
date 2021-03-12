@@ -2898,7 +2898,7 @@ bit.and.integer64 <- function(a,b) {
   if (length(a) == 0 || length(b) == 0)
     return(integer64())
   ret <- double(max(length(a),length(b)))
-  rv <- .Call("and_integer64",as.integer64(a),as.integer64(b),ret,PACKAGE="bit64")
+  rv <- .Call(C_and_integer64,as.integer64(a),as.integer64(b),ret,PACKAGE="bit64")
   class(rv) <- "integer64"
   rv
 }
@@ -2920,7 +2920,7 @@ bit.or.integer64 <- function(a,b) {
   if (length(a) == 0 || length(b) == 0)
     return(integer64())
   ret <- double(max(length(a),length(b)))
-  rv <- .Call("or_integer64",as.integer64(a),as.integer64(b),ret,PACKAGE="bit64")
+  rv <- .Call(C_or_integer64,as.integer64(a),as.integer64(b),ret,PACKAGE="bit64")
   class(rv) <- "integer64"
   rv
 }
