@@ -128,7 +128,19 @@ export(
 ,"!.integer64"
 ,"&.integer64"
 ,"|.integer64"
-,"xor.integer64"
+,"xor.integer64")
+
+if (!exists("shiftl.default"))
+  export("shiftr.default")
+if (!exists("ushiftr.default"))
+  export("ushiftr.default")
+if (!exists("shiftl.default"))
+  export("shiftl.default")
+
+export(
+"shiftr.integer64"
+,"ushiftr.integer64"
+,"shiftl.integer64"
 
 ,"!=.integer64"
 ,"==.integer64"
