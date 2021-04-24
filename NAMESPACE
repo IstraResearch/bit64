@@ -110,8 +110,10 @@ export(
 
 ,"bitAnd"
 ,"bitOr"
+, "bit.and"
 , "bit.and.default"
 , "bit.and.integer64"
+, "bit.or"
 , "bit.or.default"
 , "bit.or.integer64"
 
