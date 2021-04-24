@@ -2927,7 +2927,7 @@ bit.or.integer64 <- function(a,b) {
 }
 
 bitOr <- function(a,b) {
-  UseMethod("bit.or")
+  bit.or(a,b)
 }
 
 as.vector.integer64 <- function(x, mode="any"){
