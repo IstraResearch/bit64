@@ -2903,8 +2903,9 @@ bit.and.integer64 <- function(a,b) {
   rv
 }
 
+# compatibility shim
 bitAnd <- function(a,b) {
-  UseMethod("bit.and")
+  bit.and(a,b)
 }
 
 
