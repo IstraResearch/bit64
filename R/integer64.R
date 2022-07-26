@@ -2250,6 +2250,13 @@ as.data.frame.integer64 <- function(x, ...){
   ret
 }
 
+# Mimics as.list.factor
+as.list.integer64 <- function (x, ...) {
+  res <- vector("list", length(x))
+  for (i in seq_along(x)) res[[i]] <- x[i]
+  res
+}
+
 
 "rep.integer64" <- function(x, ...){
 	cl <- oldClass(x)
